@@ -2882,7 +2882,7 @@
         }
 
         function editCategory(id) {
-            const category = allCategories.find(item => item.id === id);
+            const category = allCategories.find(item => String(item.id) === String(id));
             if (!category) {showToast('Category not found.', 'error'); return;}
 
             editingCategoryId = id;
@@ -3091,7 +3091,7 @@
         }
 
         function editProduct(id) {
-            const product = allProducts.find(item => item.id === id);
+            const product = allProducts.find(item => String(item.id) === String(id));
             if (!product) {showToast('Product not found.', 'error'); return;}
 
             editingProductId = id;
