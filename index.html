@@ -1581,7 +1581,7 @@
         // =========================================================
         // ===== R2 UPLOAD CONFIG =====
         // =========================================================
-        const R2_WORKER_URL = 'https://dry-firefly-73dc.scaleplanetbases.workers.dev';
+        const R2_WORKER_URL = 'https://dry-firefly-73dc.scaleplanetbases.workers.dev/';
         const R2_UPLOAD_KEY = 'bef8fb27a74bed38b9cb6eaef6fde173dded2c4161aa5ab9fceb2696bc0bf855';
 
         async function uploadToR2(file, folder = 'misc') {
@@ -2803,83 +2803,88 @@
         // ===== ADD / UPDATE CATEGORY =====
         addCategoryForm.addEventListener('submit', handleAddCategory);
 
-        async function handleAddCategory(e) {
-            e.preventDefault();
+async function handleAddCategory(e) {
+    e.preventDefault();
 
-            if (isCardImageUploading || isBannerImageUploading) {
-                showToast('Please wait until image upload finishes.', 'error');
-                return;
-            }
+    if (isCardImageUploading || isBannerImageUploading) {
+        showToast('Please wait until image upload finishes.', 'error');
+        return;
+    }
 
-            const name = newCategoryName.value.trim();
-            const cardImage = categoryCardImageURL.value.trim() || uploadedCardImageUrl.trim();
-            const bannerImage = categoryBannerImageURL.value.trim() || uploadedBannerImageUrl.trim();
-            const parentId = newCategoryParent.value || null;
-            const isMain = !parentId;
+    const name = newCategoryName.value.trim();
+    const cardImage = categoryCardImageURL.value.trim() || uploadedCardImageUrl.trim();
+    const bannerImage = categoryBannerImageURL.value.trim() || uploadedBannerImageUrl.trim();
+    const parentId = newCategoryParent.value || null;
+    const isMain = !parentId;
 
-            if (!name) {
-                categoryMessage.textContent = 'Please enter a category name.';
-                categoryMessage.style.color = 'var(--danger-red)';
-                return;
-            }
+    if (!name) {
+        categoryMessage.textContent = 'Please enter a category name.';
+        categoryMessage.style.color = 'var(--danger-red)';
+        return;
+    }
 
-            const exists = allCategories.some(cat =>
-                cat.name.toLowerCase() === name.toLowerCase() && cat.id !== editingCategoryId
-            );
+    // ✅ FIX: String vs Number aur Edit case handle kiya gaya hai
+    const exists = allCategories.some(cat => {
+        const isSameName = cat.name.toLowerCase() === name.toLowerCase();
+        // Agar hum edit kar rahe hain, toh check karein ke ID mukhtalif ho
+        const isDifferentId = editingCategoryId ? String(cat.id) !== String(editingCategoryId) : true;
+        return isSameName && isDifferentId;
+    });
 
-            if (exists) {
-                categoryMessage.textContent = 'Category already exists!';
-                categoryMessage.style.color = 'var(--danger-red)';
-                return;
-            }
+    if (exists) {
+        categoryMessage.textContent = 'Category already exists!';
+        categoryMessage.style.color = 'var(--danger-red)';
+        return;
+    }
 
-            addCategoryBtn.disabled = true;
-            addCategoryBtn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> ${editingCategoryId ? 'Updating...' : 'Saving...'}`;
+    addCategoryBtn.disabled = true;
+    addCategoryBtn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> ${editingCategoryId ? 'Updating...' : 'Saving...'}`;
+    categoryMessage.textContent = '';
 
-            try {
-                const categoryData = {
-                    name: name,
-                    image: cardImage || '',
-                    banner_image: bannerImage || '',
-                    is_main: isMain,
-                    parent_id: parentId || null,
-                };
+    try {
+        const categoryData = {
+            name: name,
+            image: cardImage || '',
+            banner_image: bannerImage || '',
+            is_main: isMain,
+            parent_id: parentId || null,
+        };
 
-                if (!editingCategoryId) {
-                    categoryData.created_at = new Date().toISOString();
-                }
-
-                if (editingCategoryId) {
-                    const {error} = await supabaseClient
-                        .from('categories')
-                        .update(categoryData)
-                        .eq('id', editingCategoryId);
-                    if (error) throw error;
-                    showToast('Category updated successfully!', 'success');
-                } else {
-                    const {error} = await supabaseClient
-                        .from('categories')
-                        .insert([categoryData]);
-                    if (error) throw error;
-                    showToast('Category added successfully!', 'success');
-                }
-
-                resetCategoryForm();
-                categoriesLoaded = false;
-                await loadCategories(true);
-                loadCategoryOptions();
-                updateStats();
-
-            } catch (error) {
-                console.error('Save category error:', error);
-                categoryMessage.textContent = error?.message || 'Failed to save category.';
-                categoryMessage.style.color = 'var(--danger-red)';
-                showToast('Failed to save category.', 'error');
-            } finally {
-                addCategoryBtn.disabled = false;
-                addCategoryBtn.innerHTML = `<i class="fas fa-plus"></i> ${editingCategoryId ? 'Update Category' : 'Add Category'}`;
-            }
+        if (!editingCategoryId) {
+            categoryData.created_at = new Date().toISOString();
         }
+
+        if (editingCategoryId) {
+            const {error} = await supabaseClient
+                .from('categories')
+                .update(categoryData)
+                .eq('id', editingCategoryId);
+            if (error) throw error;
+            showToast('Category updated successfully!', 'success');
+        } else {
+            const {error} = await supabaseClient
+                .from('categories')
+                .insert([categoryData]);
+            if (error) throw error;
+            showToast('Category added successfully!', 'success');
+        }
+
+        resetCategoryForm();
+        categoriesLoaded = false;
+        await loadCategories(true);
+        loadCategoryOptions();
+        updateStats();
+
+    } catch (error) {
+        console.error('Save category error:', error);
+        categoryMessage.textContent = error?.message || 'Failed to save category.';
+        categoryMessage.style.color = 'var(--danger-red)';
+        showToast('Failed to save category.', 'error');
+    } finally {
+        addCategoryBtn.disabled = false;
+        addCategoryBtn.innerHTML = `<i class="fas fa-plus"></i> ${editingCategoryId ? 'Update Category' : 'Add Category'}`;
+    }
+}
 
         function editCategory(id) {
             const category = allCategories.find(item => String(item.id) === String(id));
