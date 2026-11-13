@@ -2919,7 +2919,7 @@
         }
 
         async function deleteCategory(id) {
-            const category = allCategories.find(item => item.id === id);
+            const category = allCategories.find(item => String(item.id) === String(id));
             if (!category) return;
 
             const relatedProducts = allProducts.filter(p => p.category === category.name);
@@ -3136,7 +3136,7 @@
         }
 
         async function deleteProduct(id) {
-            const product = allProducts.find(item => item.id === id);
+            const product = allProducts.find(item => String(item.id) === String(id));
             if (!product) return;
             if (!confirm(`Delete "${product.name || 'this product'}"?`)) return;
 
