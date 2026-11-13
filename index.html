@@ -21,14 +21,9 @@
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
 
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
-            /* Scale Planet Colors */
             --primary: #3e4095;
             --primary-dark: #2d2e6b;
             --primary-light: #eeeffa;
@@ -55,9 +50,7 @@
             line-height: 1.6;
         }
 
-        button, input, select, textarea {
-            font-family: inherit;
-        }
+        button, input, select, textarea { font-family: inherit; }
 
         img {
             -webkit-user-drag: none;
@@ -221,10 +214,7 @@
             gap: 16px;
         }
 
-        .admin-name {
-            font-size: 13px;
-            font-weight: 600;
-        }
+        .admin-name { font-size: 13px; font-weight: 600; }
 
         .logout-btn {
             padding: 8px 20px;
@@ -238,9 +228,7 @@
             transition: var(--transition);
         }
 
-        .logout-btn:hover {
-            background: #c0392b;
-        }
+        .logout-btn:hover { background: #c0392b; }
 
         /* ===== STATS ===== */
         .stats-grid {
@@ -265,10 +253,7 @@
             display: block;
         }
 
-        .stat-card .label {
-            font-size: 13px;
-            color: var(--text-light);
-        }
+        .stat-card .label { font-size: 13px; color: var(--text-light); }
 
         /* ===== TABS ===== */
         .admin-tabs {
@@ -290,20 +275,9 @@
             color: var(--text-dark);
         }
 
-        .admin-tab:hover {
-            border-color: var(--primary);
-            color: var(--primary);
-        }
-
-        .admin-tab.active {
-            background: var(--primary);
-            color: var(--white);
-            border-color: var(--primary);
-        }
-
-        .admin-tab i {
-            margin-right: 6px;
-        }
+        .admin-tab:hover { border-color: var(--primary); color: var(--primary); }
+        .admin-tab.active { background: var(--primary); color: var(--white); border-color: var(--primary); }
+        .admin-tab i { margin-right: 6px; }
 
         .tab-content {
             display: none;
@@ -313,10 +287,7 @@
             box-shadow: var(--shadow);
         }
 
-        .tab-content.active {
-            display: block;
-            animation: fadeInUp 0.3s ease forwards;
-        }
+        .tab-content.active { display: block; animation: fadeInUp 0.3s ease forwards; }
 
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(10px); }
@@ -330,9 +301,7 @@
             gap: 16px 24px;
         }
 
-        .admin-form .full-width {
-            grid-column: 1 / -1;
-        }
+        .admin-form .full-width { grid-column: 1 / -1; }
 
         .admin-form label {
             font-size: 13px;
@@ -464,11 +433,7 @@
         .preview-box a { color: var(--primary); text-decoration: underline; }
 
         /* ===== MULTI-IMAGE UPLOAD ===== */
-        .multi-image-upload {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
+        .multi-image-upload { display: flex; flex-direction: column; gap: 12px; }
 
         .image-upload-area {
             border: 2px dashed var(--border-color);
@@ -480,15 +445,8 @@
             background: var(--light-gray);
         }
 
-        .image-upload-area:hover {
-            border-color: var(--primary);
-            background: var(--primary-light);
-        }
-
-        .image-upload-area.uploading {
-            pointer-events: none;
-            opacity: 0.7;
-        }
+        .image-upload-area:hover { border-color: var(--primary); background: var(--primary-light); }
+        .image-upload-area.uploading { pointer-events: none; opacity: 0.7; }
 
         .image-upload-area i {
             font-size: 32px;
@@ -497,10 +455,7 @@
             margin-bottom: 8px;
         }
 
-        .image-upload-area p {
-            font-size: 13px;
-            color: var(--text-light);
-        }
+        .image-upload-area p { font-size: 13px; color: var(--text-light); }
 
         .image-upload-area small {
             display: block;
@@ -575,7 +530,6 @@
 
         .img-remove-btn { background: var(--danger-red); color: white; }
         .img-remove-btn:hover { background: #c0392b; }
-
         .img-main-btn { background: var(--primary); color: white; }
         .img-main-btn:hover { background: var(--primary-dark); }
 
@@ -593,12 +547,7 @@
             letter-spacing: 0.5px;
         }
 
-        .upload-status {
-            font-size: 12px;
-            color: var(--text-light);
-            margin-top: 8px;
-        }
-
+        .upload-status { font-size: 12px; color: var(--text-light); margin-top: 8px; }
         .upload-status.success { color: var(--success-green); }
         .upload-status.error { color: var(--danger-red); }
 
@@ -674,10 +623,7 @@
         .cat-preview-single .remove-btn:hover { background: #c0392b; }
 
         /* ===== BUTTONS ===== */
-        .btn-primary, .btn-success, .btn-danger, .btn-outline {
-            cursor: pointer;
-            transition: var(--transition);
-        }
+        .btn-primary, .btn-success, .btn-danger, .btn-outline { cursor: pointer; transition: var(--transition); }
 
         .btn-primary {
             padding: 10px 28px;
@@ -705,16 +651,8 @@
             font-size: 14px;
         }
 
-        .btn-success:hover {
-            background: #138a45;
-            transform: translateY(-2px);
-        }
-
-        .btn-success:disabled, .btn-primary:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-            transform: none;
-        }
+        .btn-success:hover { background: #138a45; transform: translateY(-2px); }
+        .btn-success:disabled, .btn-primary:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
 
         .btn-danger {
             padding: 8px 16px;
@@ -738,27 +676,15 @@
             font-size: 14px;
         }
 
-        .btn-outline:hover {
-            border-color: var(--primary);
-            color: var(--primary);
-        }
+        .btn-outline:hover { border-color: var(--primary); color: var(--primary); }
 
         /* ===== TABLE ===== */
-        .table-responsive {
-            overflow-x: auto;
-            max-height: 500px;
-            overflow-y: auto;
-        }
-
+        .table-responsive { overflow-x: auto; max-height: 500px; overflow-y: auto; }
         .table-responsive::-webkit-scrollbar { width: 6px; height: 6px; }
         .table-responsive::-webkit-scrollbar-track { background: var(--light-gray); border-radius: 10px; }
         .table-responsive::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 10px; }
 
-        .admin-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 13px;
-        }
+        .admin-table { width: 100%; border-collapse: collapse; font-size: 13px; }
 
         .admin-table th {
             text-align: left;
@@ -793,12 +719,7 @@
             position: relative;
         }
 
-        .product-thumb {
-            width: 50px;
-            height: 50px;
-            object-fit: contain;
-            display: block;
-        }
+        .product-thumb { width: 50px; height: 50px; object-fit: contain; display: block; }
 
         .image-count-badge {
             position: absolute;
@@ -832,11 +753,7 @@
         .badge-status.ask-price { background: #f39c12; color: white; }
         .badge-status.custom-badge { background: #8e44ad; color: white; }
 
-        .admin-table .actions {
-            display: flex;
-            gap: 6px;
-            flex-wrap: wrap;
-        }
+        .admin-table .actions { display: flex; gap: 6px; flex-wrap: wrap; }
 
         .admin-table .actions button {
             padding: 5px 12px;
@@ -850,7 +767,6 @@
 
         .edit-btn { background: var(--primary-light); color: var(--primary); }
         .edit-btn:hover { background: var(--primary); color: var(--white); }
-        
         .delete-btn { background: #fadbd8; color: var(--danger-red); }
         .delete-btn:hover { background: var(--danger-red); color: var(--white); }
 
@@ -869,13 +785,7 @@
         }
 
         .brand-admin-preview.show { display: flex; }
-
-        .brand-admin-preview img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            padding: 8px;
-        }
+        .brand-admin-preview img { width: 100%; height: 100%; object-fit: contain; padding: 8px; }
 
         .brand-table-thumb {
             width: 65px;
@@ -889,21 +799,12 @@
             overflow: hidden;
         }
 
-        .brand-table-thumb img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            padding: 4px;
-        }
+        .brand-table-thumb img { width: 100%; height: 100%; object-fit: contain; padding: 4px; }
 
         .customer-name-admin { font-weight: 600; font-size: 14px; }
 
         /* ===== CATEGORIES ===== */
-        .categories-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 24px;
-        }
+        .categories-container { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
 
         .categories-column {
             background: var(--light-gray);
@@ -924,11 +825,7 @@
             gap: 8px;
         }
 
-        .categories-column h4 .count {
-            font-size: 12px;
-            font-weight: 400;
-            color: var(--text-light);
-        }
+        .categories-column h4 .count { font-size: 12px; font-weight: 400; color: var(--text-light); }
 
         .category-item {
             display: flex;
@@ -942,17 +839,9 @@
             margin-bottom: 6px;
         }
 
-        .category-item:hover {
-            border-color: var(--primary);
-            box-shadow: var(--shadow);
-        }
+        .category-item:hover { border-color: var(--primary); box-shadow: var(--shadow); }
 
-        .category-item .cat-info {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            flex: 1;
-        }
+        .category-item .cat-info { display: flex; align-items: center; gap: 10px; flex: 1; }
 
         .category-item .cat-thumb {
             width: 40px;
@@ -967,17 +856,10 @@
             justify-content: center;
         }
 
-        .category-item .cat-thumb img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
+        .category-item .cat-thumb img { width: 100%; height: 100%; object-fit: cover; }
         .category-item .cat-thumb .no-image-icon { font-size: 14px; color: #bbb; }
-
         .category-item .cat-name { font-weight: 600; font-size: 13px; }
         .category-item .cat-count { font-size: 11px; color: var(--text-light); margin-left: 6px; }
-
         .category-item .cat-actions { display: flex; gap: 4px; }
 
         .category-item .cat-actions button {
@@ -991,11 +873,7 @@
             font-size: 12px;
         }
 
-        .category-item .cat-actions button:hover {
-            background: rgba(0, 0, 0, 0.05);
-            color: var(--primary);
-        }
-
+        .category-item .cat-actions button:hover { background: rgba(0, 0, 0, 0.05); color: var(--primary); }
         .category-item .cat-actions .cat-delete:hover { color: var(--danger-red); }
 
         /* ===== TOAST ===== */
@@ -1034,17 +912,8 @@
 
         @keyframes spin { to { transform: rotate(360deg); } }
 
-        .empty-state {
-            text-align: center;
-            padding: 40px 20px;
-            color: var(--text-light);
-        }
-
-        .empty-state i {
-            font-size: 35px;
-            display: block;
-            margin-bottom: 10px;
-        }
+        .empty-state { text-align: center; padding: 40px 20px; color: var(--text-light); }
+        .empty-state i { font-size: 35px; display: block; margin-bottom: 10px; }
 
         /* ===== RESPONSIVE ===== */
         @media (max-width: 1024px) {
@@ -1195,6 +1064,7 @@
                             <th>Image</th>
                             <th>Name</th>
                             <th>Model #</th>
+                            <th>Capacity</th> <!-- ✅ ADDED CAPACITY COLUMN -->
                             <th>Slug</th>
                             <th>Category</th>
                             <th>Price</th>
@@ -1204,7 +1074,7 @@
                     </thead>
                     <tbody id="productsTableBody">
                         <tr>
-                            <td colspan="8" style="text-align:center; padding:30px;">
+                            <td colspan="9" style="text-align:center; padding:30px;">
                                 <div class="loading-spinner"></div>
                                 <p style="margin-top:10px; color:var(--text-light);">Loading products...</p>
                             </td>
@@ -1241,6 +1111,13 @@
                     <label for="productModelNumber">Model Number <span class="optional">(optional)</span></label>
                     <input type="text" id="productModelNumber" placeholder="e.g. WS-PS-100">
                     <p class="helper-text">Shown next to product name & in slug</p>
+                </div>
+
+                <!-- ✅ ADDED CAPACITY FIELD -->
+                <div>
+                    <label for="productCapacity">Capacity *</label>
+                    <input type="text" id="productCapacity" placeholder="e.g. 50KG – 200KG or 100KG" required>
+                    <p class="helper-text">Search mein use hoga. Format: "50KG - 100KG" ya "100KG"</p>
                 </div>
 
                 <div class="full-width">
@@ -1643,6 +1520,7 @@
             }
         }
 
+        // ===== ELEMENT REFERENCES =====
         const loginPage = document.getElementById('loginPage');
         const adminDashboard = document.getElementById('adminDashboard');
         const loginForm = document.getElementById('loginForm');
@@ -1662,6 +1540,7 @@
         const productDesc = document.getElementById('productDesc');
         const productName = document.getElementById('productName');
         const productModelNumber = document.getElementById('productModelNumber');
+        const productCapacity = document.getElementById('productCapacity'); // ✅ ADDED
         const productSlug = document.getElementById('productSlug');
         const slugPreview = document.getElementById('slugPreview');
         const descriptionPreview = document.getElementById('descriptionPreview');
@@ -1756,7 +1635,7 @@
         const MAX_IMAGES = 5;
 
         // =========================================================
-        // ===== SLUG GENERATION FUNCTIONS =====
+        // ===== SLUG GENERATION =====
         // =========================================================
         function generateSlugFromNameAndModel(name, model) {
             if (!name || name.trim() === '') return '';
@@ -1770,7 +1649,7 @@
         }
 
         function isSlugUnique(slug, excludeProductId = null) {
-            return !allProducts.some(p => p.slug === slug && p.id !== excludeProductId);
+            return !allProducts.some(p => p.slug === slug && String(p.id) !== String(excludeProductId));
         }
 
         function autoGenerateSlug() {
@@ -1811,10 +1690,8 @@
         function parseMarkdown(text) {
             if (!text) return '';
             let html = String(text)
-                .replace(/&/g, '&amp;')
-                .replace(/</g, '&lt;')
-                .replace(/>/g, '&gt;')
-                .replace(/"/g, '&quot;')
+                .replace(/&/g, '&amp;').replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;').replace(/"/g, '&quot;')
                 .replace(/'/g, '&#039;');
             html = html.replace(/\*\*\*(.+?)\*\*\*/g, '<strong><em>$1</em></strong>');
             html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
@@ -1828,10 +1705,7 @@
 
         function updateDescriptionPreview() {
             const raw = productDesc.value || '';
-            if (raw.trim() === '') {
-                descriptionPreview.innerHTML = '';
-                return;
-            }
+            if (raw.trim() === '') { descriptionPreview.innerHTML = ''; return; }
             descriptionPreview.innerHTML = parseMarkdown(raw);
         }
 
@@ -1939,7 +1813,7 @@
 
             productsTableBody.innerHTML = `
                 <tr>
-                    <td colspan="8" style="text-align:center; padding:30px;">
+                    <td colspan="9" style="text-align:center; padding:30px;">
                         <div class="loading-spinner"></div>
                         <p style="margin-top:10px; color:var(--text-light);">Loading products...</p>
                     </td>
@@ -1963,7 +1837,7 @@
                 console.error('Error loading products:', error);
                 productsTableBody.innerHTML = `
                     <tr>
-                        <td colspan="8" style="text-align:center; padding:30px; color:var(--danger-red);">
+                        <td colspan="9" style="text-align:center; padding:30px; color:var(--danger-red);">
                             <i class="fas fa-exclamation-triangle" style="font-size:25px; display:block; margin-bottom:10px;"></i>
                             Failed to load products.
                         </td>
@@ -1980,8 +1854,9 @@
                     const name = String(product.name || '').toLowerCase();
                     const category = String(product.category || '').toLowerCase();
                     const model = String(product.model_number || '').toLowerCase();
+                    const capacity = String(product.capacity || '').toLowerCase();
                     const slug = String(product.slug || '').toLowerCase();
-                    return name.includes(searchTerm) || category.includes(searchTerm) || model.includes(searchTerm) || slug.includes(searchTerm);
+                    return name.includes(searchTerm) || category.includes(searchTerm) || model.includes(searchTerm) || capacity.includes(searchTerm) || slug.includes(searchTerm);
                 }) : allProducts;
 
             if (filtered.length === 0) {
@@ -1997,6 +1872,7 @@
             filtered.forEach((product) => {
                 const name = escapeHtml(product.name || 'Unnamed');
                 const modelNumber = product.model_number ? escapeHtml(product.model_number) : '-';
+                const capacity = product.capacity ? escapeHtml(product.capacity) : '-'; // ✅ ADDED
                 const category = escapeHtml(product.category || 'Uncategorized');
 
                 let slugHtml = '';
@@ -2051,6 +1927,7 @@
                         <td>${imageHtml}</td>
                         <td><strong>${name}</strong>${badgeHtml}</td>
                         <td>${modelNumber}</td>
+                        <td>${capacity}</td> <!-- ✅ ADDED CAPACITY CELL -->
                         <td>${slugHtml}</td>
                         <td>${category}</td>
                         <td>${priceDisplay}</td>
@@ -2803,88 +2680,86 @@
         // ===== ADD / UPDATE CATEGORY =====
         addCategoryForm.addEventListener('submit', handleAddCategory);
 
-async function handleAddCategory(e) {
-    e.preventDefault();
+        async function handleAddCategory(e) {
+            e.preventDefault();
 
-    if (isCardImageUploading || isBannerImageUploading) {
-        showToast('Please wait until image upload finishes.', 'error');
-        return;
-    }
+            if (isCardImageUploading || isBannerImageUploading) {
+                showToast('Please wait until image upload finishes.', 'error');
+                return;
+            }
 
-    const name = newCategoryName.value.trim();
-    const cardImage = categoryCardImageURL.value.trim() || uploadedCardImageUrl.trim();
-    const bannerImage = categoryBannerImageURL.value.trim() || uploadedBannerImageUrl.trim();
-    const parentId = newCategoryParent.value || null;
-    const isMain = !parentId;
+            const name = newCategoryName.value.trim();
+            const cardImage = categoryCardImageURL.value.trim() || uploadedCardImageUrl.trim();
+            const bannerImage = categoryBannerImageURL.value.trim() || uploadedBannerImageUrl.trim();
+            const parentId = newCategoryParent.value || null;
+            const isMain = !parentId;
 
-    if (!name) {
-        categoryMessage.textContent = 'Please enter a category name.';
-        categoryMessage.style.color = 'var(--danger-red)';
-        return;
-    }
+            if (!name) {
+                categoryMessage.textContent = 'Please enter a category name.';
+                categoryMessage.style.color = 'var(--danger-red)';
+                return;
+            }
 
-    // ✅ FIX: String vs Number aur Edit case handle kiya gaya hai
-    const exists = allCategories.some(cat => {
-        const isSameName = cat.name.toLowerCase() === name.toLowerCase();
-        // Agar hum edit kar rahe hain, toh check karein ke ID mukhtalif ho
-        const isDifferentId = editingCategoryId ? String(cat.id) !== String(editingCategoryId) : true;
-        return isSameName && isDifferentId;
-    });
+            const exists = allCategories.some(cat => {
+                const isSameName = cat.name.toLowerCase() === name.toLowerCase();
+                const isDifferentId = editingCategoryId ? String(cat.id) !== String(editingCategoryId) : true;
+                return isSameName && isDifferentId;
+            });
 
-    if (exists) {
-        categoryMessage.textContent = 'Category already exists!';
-        categoryMessage.style.color = 'var(--danger-red)';
-        return;
-    }
+            if (exists) {
+                categoryMessage.textContent = 'Category already exists!';
+                categoryMessage.style.color = 'var(--danger-red)';
+                return;
+            }
 
-    addCategoryBtn.disabled = true;
-    addCategoryBtn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> ${editingCategoryId ? 'Updating...' : 'Saving...'}`;
-    categoryMessage.textContent = '';
+            addCategoryBtn.disabled = true;
+            addCategoryBtn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> ${editingCategoryId ? 'Updating...' : 'Saving...'}`;
+            categoryMessage.textContent = '';
 
-    try {
-        const categoryData = {
-            name: name,
-            image: cardImage || '',
-            banner_image: bannerImage || '',
-            is_main: isMain,
-            parent_id: parentId || null,
-        };
+            try {
+                const categoryData = {
+                    name: name,
+                    image: cardImage || '',
+                    banner_image: bannerImage || '',
+                    is_main: isMain,
+                    parent_id: parentId || null,
+                };
 
-        if (!editingCategoryId) {
-            categoryData.created_at = new Date().toISOString();
+                if (!editingCategoryId) {
+                    categoryData.created_at = new Date().toISOString();
+                }
+
+                if (editingCategoryId) {
+                    const {error} = await supabaseClient
+                        .from('categories')
+                        .update(categoryData)
+                        .eq('id', editingCategoryId);
+                    if (error) throw error;
+                    showToast('Category updated successfully!', 'success');
+                } else {
+                    const {error} = await supabaseClient
+                        .from('categories')
+                        .insert([categoryData]);
+                    if (error) throw error;
+                    showToast('Category added successfully!', 'success');
+                }
+
+                resetCategoryForm();
+                categoriesLoaded = false;
+                await loadCategories(true);
+                loadCategoryOptions();
+                updateStats();
+
+            } catch (error) {
+                console.error('Save category error:', error);
+                categoryMessage.textContent = error?.message || 'Failed to save category.';
+                categoryMessage.style.color = 'var(--danger-red)';
+                showToast('Failed to save category.', 'error');
+            } finally {
+                addCategoryBtn.disabled = false;
+                addCategoryBtn.innerHTML = `<i class="fas fa-plus"></i> ${editingCategoryId ? 'Update Category' : 'Add Category'}`;
+            }
         }
-
-        if (editingCategoryId) {
-            const {error} = await supabaseClient
-                .from('categories')
-                .update(categoryData)
-                .eq('id', editingCategoryId);
-            if (error) throw error;
-            showToast('Category updated successfully!', 'success');
-        } else {
-            const {error} = await supabaseClient
-                .from('categories')
-                .insert([categoryData]);
-            if (error) throw error;
-            showToast('Category added successfully!', 'success');
-        }
-
-        resetCategoryForm();
-        categoriesLoaded = false;
-        await loadCategories(true);
-        loadCategoryOptions();
-        updateStats();
-
-    } catch (error) {
-        console.error('Save category error:', error);
-        categoryMessage.textContent = error?.message || 'Failed to save category.';
-        categoryMessage.style.color = 'var(--danger-red)';
-        showToast('Failed to save category.', 'error');
-    } finally {
-        addCategoryBtn.disabled = false;
-        addCategoryBtn.innerHTML = `<i class="fas fa-plus"></i> ${editingCategoryId ? 'Update Category' : 'Add Category'}`;
-    }
-}
 
         function editCategory(id) {
             const category = allCategories.find(item => String(item.id) === String(id));
@@ -2928,7 +2803,7 @@ async function handleAddCategory(e) {
             if (!category) return;
 
             const relatedProducts = allProducts.filter(p => p.category === category.name);
-            const relatedSubCats = allCategories.filter(c => c.parent_id === id);
+            const relatedSubCats = allCategories.filter(c => String(c.parent_id) === String(id));
 
             let message = `Delete category "${category.name}"?`;
             if (relatedSubCats.length > 0) message += `\n\nThis category has ${relatedSubCats.length} sub-categories. They will also be deleted.`;
@@ -2993,6 +2868,7 @@ async function handleAddCategory(e) {
 
             const name = document.getElementById('productName').value.trim();
             const modelNumber = document.getElementById('productModelNumber').value.trim() || null;
+            const capacity = document.getElementById('productCapacity').value.trim() || null; // ✅ ADDED
             let slug = (productSlug.value || '').trim();
             if (!slug) {
                 slug = generateSlugFromNameAndModel(name, modelNumber) || null;
@@ -3009,6 +2885,7 @@ async function handleAddCategory(e) {
             const desc = productDesc.value.trim();
 
             if (!name) {showToast('Please enter product name.', 'error'); return;}
+            if (!capacity) {showToast('Please enter product capacity.', 'error'); return;} // ✅ ADDED VALIDATION
             if (!category) {showToast('Please select a category.', 'error'); return;}
 
             if (stockStatus !== 'ask-price') {
@@ -3032,6 +2909,7 @@ async function handleAddCategory(e) {
                 const productData = {
                     name,
                     model_number: modelNumber,
+                    capacity: capacity,        // ✅ ADDED
                     slug: slug,
                     category,
                     price: stockStatus === 'ask-price' ? 0 : price,
@@ -3047,7 +2925,6 @@ async function handleAddCategory(e) {
                 };
 
                 if (editingProductId) {
-                    // UPDATE
                     const {error} = await supabaseClient
                         .from('products')
                         .update(productData)
@@ -3056,7 +2933,6 @@ async function handleAddCategory(e) {
                     savedProductId = editingProductId;
                     showToast('Product updated successfully!', 'success');
                 } else {
-                    // INSERT
                     productData.created_at = new Date().toISOString();
                     const {data, error} = await supabaseClient
                         .from('products')
@@ -3067,7 +2943,6 @@ async function handleAddCategory(e) {
                     showToast('Product added successfully!', 'success');
                 }
 
-                // ===== EDGE FUNCTION CALL =====
                 if (savedProductId) {
                     showToast('⏳ Generating SEO page for Google...', 'info');
                     const genResult = await generateProductPage(savedProductId);
@@ -3106,6 +2981,7 @@ async function handleAddCategory(e) {
 
             document.getElementById('productName').value = product.name || '';
             document.getElementById('productModelNumber').value = product.model_number || '';
+            document.getElementById('productCapacity').value = product.capacity || ''; // ✅ ADDED
             productSlug.value = product.slug || '';
             slugManuallyEdited = true;
             if (slugPreview) {
@@ -3248,10 +3124,8 @@ async function handleAddCategory(e) {
 
         function escapeHtml(value) {
             return String(value)
-                .replace(/&/g, '&amp;')
-                .replace(/</g, '&lt;')
-                .replace(/>/g, '&gt;')
-                .replace(/"/g, '&quot;')
+                .replace(/&/g, '&amp;').replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;').replace(/"/g, '&quot;')
                 .replace(/'/g, '&#039;');
         }
 
