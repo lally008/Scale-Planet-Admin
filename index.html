@@ -1034,7 +1034,7 @@
                 </div>
 
                 <div>
-                    <label for="productCapacity">Capacity *</label>
+                    <label for="productCapacity">Capacity</label>
                     <input type="text" id="productCapacity" placeholder="e.g. 50KG – 200KG or 100KG" required>
                     <p class="helper-text">Search mein use hoga. Format: "50KG - 100KG" ya "100KG"</p>
                 </div>
@@ -2822,7 +2822,6 @@
             ].filter(Boolean);
 
             if (!name) {showToast('Please enter product name.', 'error'); return;}
-            if (!capacity) {showToast('Please enter product capacity.', 'error'); return;}
             if (!category) {showToast('Please select a category.', 'error'); return;}
 
             if (stockStatus !== 'ask-price') {
