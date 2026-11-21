@@ -348,7 +348,11 @@
             line-height: 1.8;
         }
 
-        .markdown-help strong { color: var(--primary); display: block; margin-bottom: 4px; font-size: 12px; }
+        .markdown-help > strong:first-child { color: var(--primary); display: block; margin-bottom: 4px; font-size: 12px; }
+        .markdown-help strong, .markdown-help b { font-weight: 700; }
+        .markdown-help em { font-style: italic; }
+        .markdown-help u { text-decoration: underline; }
+        .markdown-help s { text-decoration: line-through; }
 
         .markdown-help code {
             background: var(--white);
@@ -1391,25 +1395,97 @@
         const R2_WORKER_URL = 'https://dry-firefly-73dc.scaleplanetbases.workers.dev/';
         const R2_UPLOAD_KEY = 'bef8fb27a74bed38b9cb6eaef6fde173dded2c4161aa5ab9fceb2696bc0bf855';
 
-        async function uploadToR2(file, folder = 'misc') {
-            const fd = new FormData();
-            fd.append('file', file);
-            fd.append('folder', folder);
+        const UPLOAD_TIMEOUT_MS = 60000;   // 60s se zyada ruke to cancel + retry
+        const UPLOAD_MAX_ATTEMPTS = 4;     // total 4 koshishen
 
-            const res = await fetch(R2_WORKER_URL, {
-                method: 'POST',
-                headers: {'x-upload-key': R2_UPLOAD_KEY},
-                body: fd
-            });
+        const sleep = (ms) => new Promise(r => setTimeout(r, ms));
 
-            let data = null;
-            try {data = await res.json();} catch (_) { /* ignore */}
+        // Bari images ko chhota karta hai (max 1600px, WebP) taake slow net par bhi jaldi upload ho
+        async function compressImage(file, maxDim = 1600, quality = 0.82) {
+            try {
+                if (file.type === 'image/gif') return file;      // animation na tootay
+                if (file.size < 250 * 1024) return file;         // pehle se chhoti hai
 
-            if (!res.ok || !data || !data.url) {
-                const msg = (data && data.error) ? data.error : `Upload failed (HTTP ${res.status})`;
-                throw new Error(msg);
+                const bitmap = await createImageBitmap(file);
+                const scale = Math.min(1, maxDim / Math.max(bitmap.width, bitmap.height));
+                const w = Math.round(bitmap.width * scale);
+                const h = Math.round(bitmap.height * scale);
+
+                const canvas = document.createElement('canvas');
+                canvas.width = w;
+                canvas.height = h;
+                canvas.getContext('2d').drawImage(bitmap, 0, 0, w, h);
+                if (bitmap.close) bitmap.close();
+
+                const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/webp', quality));
+                // Browser WebP support na kare ya result bara ho to original hi bhejo
+                if (!blob || blob.type !== 'image/webp' || blob.size >= file.size) return file;
+
+                const newName = file.name.replace(/\.[^.]+$/, '') + '.webp';
+                return new File([blob], newName, {type: 'image/webp'});
+            } catch (e) {
+                console.warn('Compression skipped:', e);
+                return file;
             }
-            return data.url;
+        }
+
+        async function uploadToR2(file, folder = 'misc', onStatus = null) {
+            if (onStatus) onStatus('Optimizing image...');
+            const prepared = await compressImage(file);
+            let lastError = null;
+
+            for (let attempt = 1; attempt <= UPLOAD_MAX_ATTEMPTS; attempt++) {
+                const controller = new AbortController();
+                const timer = setTimeout(() => controller.abort(), UPLOAD_TIMEOUT_MS);
+
+                try {
+                    if (onStatus) {
+                        const kb = Math.round(prepared.size / 1024);
+                        onStatus(attempt === 1 ? `Uploading (${kb} KB)...` : `Retrying ${attempt - 1}/${UPLOAD_MAX_ATTEMPTS - 1} (${kb} KB)...`);
+                    }
+
+                    const fd = new FormData();
+                    fd.append('file', prepared);
+                    fd.append('folder', folder);
+
+                    const res = await fetch(R2_WORKER_URL, {
+                        method: 'POST',
+                        headers: {'x-upload-key': R2_UPLOAD_KEY},
+                        body: fd,
+                        signal: controller.signal
+                    });
+
+                    let data = null;
+                    try {data = await res.json();} catch (_) { /* ignore */}
+
+                    if (res.ok && data && data.url) return data.url;
+
+                    const msg = (data && data.error) ? data.error : `Upload failed (HTTP ${res.status})`;
+                    const err = new Error(msg);
+                    // 4xx (408/429 ke ilawa) = file ya key ka masla, retry se theek nahi hoga
+                    if (res.status >= 400 && res.status < 500 && res.status !== 408 && res.status !== 429) {
+                        err.permanent = true;
+                        throw err;
+                    }
+                    lastError = err;
+                } catch (err) {
+                    if (err.permanent) throw err;
+                    if (err.name === 'AbortError') {
+                        lastError = new Error('Upload timed out — internet bohat slow hai.');
+                    } else if (err instanceof TypeError) {
+                        lastError = new Error('Network error — internet disconnect ya bohat slow hai.');
+                    } else {
+                        lastError = err;
+                    }
+                    console.warn(`Upload attempt ${attempt} failed:`, err);
+                } finally {
+                    clearTimeout(timer);
+                }
+
+                if (attempt < UPLOAD_MAX_ATTEMPTS) await sleep(1500 * attempt);
+            }
+
+            throw lastError || new Error('Upload failed.');
         }
 
         // =========================================================
@@ -1623,12 +1699,12 @@
                 .replace(/&/g, '&amp;').replace(/</g, '&lt;')
                 .replace(/>/g, '&gt;').replace(/"/g, '&quot;')
                 .replace(/'/g, '&#039;');
-            html = html.replace(/\*\*\*(.+?)\*\*\*/g, '<strong><em>$1</em></strong>');
-            html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
-            html = html.replace(/(^|[^\*])\*([^\*\n]+?)\*([^\*]|$)/g, '$1<em>$2</em>$3');
-            html = html.replace(/__(.+?)__/g, '<u>$1</u>');
-            html = html.replace(/~~(.+?)~~/g, '<s>$1</s>');
-            html = html.replace(/\[([^\]]+)\]\(([^\)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
+            html = html.replace(/\*\*\*([\s\S]+?)\*\*\*/g, '<strong><em>$1</em></strong>');
+            html = html.replace(/\*\*([\s\S]+?)\*\*/g, '<strong>$1</strong>');
+            html = html.replace(/(?<![\*\w])\*(?![\s\*])([^\*\n]+?)(?<![\s\*])\*(?![\*\w])/g, '<em>$1</em>');
+            html = html.replace(/__([\s\S]+?)__/g, '<u>$1</u>');
+            html = html.replace(/~~([\s\S]+?)~~/g, '<s>$1</s>');
+            html = html.replace(/\[([^\]]+)\]\((https?:\/\/[^\)\s]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
             html = html.replace(/\n/g, '<br>');
             return html;
         }
@@ -2425,7 +2501,10 @@
             uploadStatus.textContent = `Uploading ${file.name}...`;
 
             try {
-                const publicUrl = await uploadToR2(file, 'products');
+                const publicUrl = await uploadToR2(file, 'products', (msg) => {
+                    uploadStatus.className = 'upload-status';
+                    uploadStatus.textContent = `${file.name}: ${msg}`;
+                });
                 uploadedImages.push(publicUrl);
                 uploadStatus.className = 'upload-status success';
                 uploadStatus.textContent = `Uploaded: ${file.name}`;
@@ -2435,7 +2514,7 @@
                 console.error('Upload error:', error);
                 uploadStatus.className = 'upload-status error';
                 uploadStatus.textContent = error?.message || 'Upload failed.';
-                showToast('Upload failed.', 'error');
+                showToast(error?.message || 'Upload failed.', 'error');
             } finally {
                 isUploading = false;
                 submitBtn.disabled = false;
