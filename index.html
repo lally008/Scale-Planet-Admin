@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Scale Planet - Admin Dashboard</title>
 
-    <meta name="description"
-        content="Admin panel for Scale Planet - Manage products, categories, and inventory.">
+    <meta name="description" content="Admin panel for Scale Planet - Manage products, categories, and inventory.">
     <meta name="robots" content="noindex, nofollow">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,7 +21,11 @@
     <meta http-equiv="Accept-CH" content="DPR, Width, Viewport-Width">
 
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
         :root {
             --primary: #3e4095;
@@ -30,7 +33,7 @@
             --primary-light: #eeeffa;
             --primary-mid: #4a4dae;
             --accent-gold: #ffd633;
-            
+
             --light-gray: #f5f5f5;
             --white: #ffffff;
             --text-dark: #1a1d3f;
@@ -51,7 +54,12 @@
             line-height: 1.6;
         }
 
-        button, input, select, textarea { font-family: inherit; }
+        button,
+        input,
+        select,
+        textarea {
+            font-family: inherit;
+        }
 
         img {
             -webkit-user-drag: none;
@@ -101,7 +109,10 @@
             letter-spacing: 1px;
         }
 
-        .login-box .logo p { font-size: 13px; color: var(--text-light); }
+        .login-box .logo p {
+            font-size: 13px;
+            color: var(--text-light);
+        }
 
         .login-box label {
             font-size: 13px;
@@ -145,7 +156,11 @@
             box-shadow: 0 8px 20px rgba(62, 64, 149, 0.4);
         }
 
-        .login-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+        .login-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
 
         .login-error {
             color: var(--danger-red);
@@ -176,8 +191,17 @@
             gap: 12px;
         }
 
-        .admin-header .brand { display: flex; align-items: center; gap: 12px; }
-        .admin-header .brand img { height: 36px; max-width: 150px; object-fit: contain; }
+        .admin-header .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .admin-header .brand img {
+            height: 36px;
+            max-width: 150px;
+            object-fit: contain;
+        }
 
         .admin-header .brand h1 {
             font-family: 'Orbitron', sans-serif;
@@ -193,8 +217,16 @@
             font-size: 14px;
         }
 
-        .admin-actions { display: flex; align-items: center; gap: 16px; }
-        .admin-name { font-size: 13px; font-weight: 600; }
+        .admin-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .admin-name {
+            font-size: 13px;
+            font-weight: 600;
+        }
 
         .logout-btn {
             padding: 8px 20px;
@@ -208,7 +240,9 @@
             transition: var(--transition);
         }
 
-        .logout-btn:hover { background: #c0392b; }
+        .logout-btn:hover {
+            background: #c0392b;
+        }
 
         /* ===== STATS ===== */
         .stats-grid {
@@ -226,11 +260,25 @@
             text-align: center;
         }
 
-        .stat-card .number { font-size: 32px; font-weight: 800; color: var(--primary); display: block; }
-        .stat-card .label { font-size: 13px; color: var(--text-light); }
+        .stat-card .number {
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--primary);
+            display: block;
+        }
+
+        .stat-card .label {
+            font-size: 13px;
+            color: var(--text-light);
+        }
 
         /* ===== TABS ===== */
-        .admin-tabs { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; }
+        .admin-tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
 
         .admin-tab {
             padding: 10px 24px;
@@ -244,9 +292,20 @@
             color: var(--text-dark);
         }
 
-        .admin-tab:hover { border-color: var(--primary); color: var(--primary); }
-        .admin-tab.active { background: var(--primary); color: var(--white); border-color: var(--primary); }
-        .admin-tab i { margin-right: 6px; }
+        .admin-tab:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .admin-tab.active {
+            background: var(--primary);
+            color: var(--white);
+            border-color: var(--primary);
+        }
+
+        .admin-tab i {
+            margin-right: 6px;
+        }
 
         .tab-content {
             display: none;
@@ -256,11 +315,21 @@
             box-shadow: var(--shadow);
         }
 
-        .tab-content.active { display: block; animation: fadeInUp 0.3s ease forwards; }
+        .tab-content.active {
+            display: block;
+            animation: fadeInUp 0.3s ease forwards;
+        }
 
         @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* ===== FORM ===== */
@@ -270,7 +339,9 @@
             gap: 16px 24px;
         }
 
-        .admin-form .full-width { grid-column: 1 / -1; }
+        .admin-form .full-width {
+            grid-column: 1 / -1;
+        }
 
         .admin-form label {
             font-size: 13px;
@@ -313,9 +384,16 @@
             cursor: not-allowed;
         }
 
-        .admin-form textarea { resize: vertical; font-family: 'Courier New', monospace; }
+        .admin-form textarea {
+            resize: vertical;
+            font-family: 'Courier New', monospace;
+        }
 
-        .admin-form .helper-text { font-size: 11px; color: var(--text-light); margin-top: 4px; }
+        .admin-form .helper-text {
+            font-size: 11px;
+            color: var(--text-light);
+            margin-top: 4px;
+        }
 
         /* ===== SLUG FIELD ===== */
         #productSlug {
@@ -326,7 +404,11 @@
             font-weight: 600;
         }
 
-        .slug-preview-text { font-size: 11px; color: var(--text-light); margin-top: 4px; }
+        .slug-preview-text {
+            font-size: 11px;
+            color: var(--text-light);
+            margin-top: 4px;
+        }
 
         .slug-preview-text code {
             background: var(--primary-light);
@@ -348,11 +430,29 @@
             line-height: 1.8;
         }
 
-        .markdown-help > strong:first-child { color: var(--primary); display: block; margin-bottom: 4px; font-size: 12px; }
-        .markdown-help strong, .markdown-help b { font-weight: 700; }
-        .markdown-help em { font-style: italic; }
-        .markdown-help u { text-decoration: underline; }
-        .markdown-help s { text-decoration: line-through; }
+        .markdown-help>strong:first-child {
+            color: var(--primary);
+            display: block;
+            margin-bottom: 4px;
+            font-size: 12px;
+        }
+
+        .markdown-help strong,
+        .markdown-help b {
+            font-weight: 700;
+        }
+
+        .markdown-help em {
+            font-style: italic;
+        }
+
+        .markdown-help u {
+            text-decoration: underline;
+        }
+
+        .markdown-help s {
+            text-decoration: line-through;
+        }
 
         .markdown-help code {
             background: var(--white);
@@ -383,14 +483,35 @@
             font-style: italic;
         }
 
-        .preview-box strong { font-weight: 700; color: var(--text-dark); }
-        .preview-box em { font-style: italic; }
-        .preview-box u { text-decoration: underline; }
-        .preview-box s { text-decoration: line-through; opacity: 0.7; }
-        .preview-box a { color: var(--primary); text-decoration: underline; }
+        .preview-box strong {
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .preview-box em {
+            font-style: italic;
+        }
+
+        .preview-box u {
+            text-decoration: underline;
+        }
+
+        .preview-box s {
+            text-decoration: line-through;
+            opacity: 0.7;
+        }
+
+        .preview-box a {
+            color: var(--primary);
+            text-decoration: underline;
+        }
 
         /* ===== MULTI-IMAGE UPLOAD ===== */
-        .multi-image-upload { display: flex; flex-direction: column; gap: 12px; }
+        .multi-image-upload {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
 
         .image-upload-area {
             border: 2px dashed var(--border-color);
@@ -402,8 +523,15 @@
             background: var(--light-gray);
         }
 
-        .image-upload-area:hover { border-color: var(--primary); background: var(--primary-light); }
-        .image-upload-area.uploading { pointer-events: none; opacity: 0.7; }
+        .image-upload-area:hover {
+            border-color: var(--primary);
+            background: var(--primary-light);
+        }
+
+        .image-upload-area.uploading {
+            pointer-events: none;
+            opacity: 0.7;
+        }
 
         .image-upload-area i {
             font-size: 32px;
@@ -412,8 +540,17 @@
             margin-bottom: 8px;
         }
 
-        .image-upload-area p { font-size: 13px; color: var(--text-light); }
-        .image-upload-area small { display: block; margin-top: 5px; color: var(--text-light); font-size: 11px; }
+        .image-upload-area p {
+            font-size: 13px;
+            color: var(--text-light);
+        }
+
+        .image-upload-area small {
+            display: block;
+            margin-top: 5px;
+            color: var(--text-light);
+            font-size: 11px;
+        }
 
         .image-counter {
             font-size: 12px;
@@ -451,7 +588,12 @@
             box-shadow: 0 0 0 3px rgba(24, 169, 87, 0.15);
         }
 
-        .image-preview-item img { width: 100%; height: 100%; object-fit: contain; padding: 6px; }
+        .image-preview-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 6px;
+        }
 
         .image-preview-item .img-actions {
             position: absolute;
@@ -474,10 +616,23 @@
             transition: var(--transition);
         }
 
-        .img-remove-btn { background: var(--danger-red); color: white; }
-        .img-remove-btn:hover { background: #c0392b; }
-        .img-main-btn { background: var(--primary); color: white; }
-        .img-main-btn:hover { background: var(--primary-dark); }
+        .img-remove-btn {
+            background: var(--danger-red);
+            color: white;
+        }
+
+        .img-remove-btn:hover {
+            background: #c0392b;
+        }
+
+        .img-main-btn {
+            background: var(--primary);
+            color: white;
+        }
+
+        .img-main-btn:hover {
+            background: var(--primary-dark);
+        }
 
         .image-preview-item .main-label {
             position: absolute;
@@ -493,9 +648,19 @@
             letter-spacing: 0.5px;
         }
 
-        .upload-status { font-size: 12px; color: var(--text-light); margin-top: 8px; }
-        .upload-status.success { color: var(--success-green); }
-        .upload-status.error { color: var(--danger-red); }
+        .upload-status {
+            font-size: 12px;
+            color: var(--text-light);
+            margin-top: 8px;
+        }
+
+        .upload-status.success {
+            color: var(--success-green);
+        }
+
+        .upload-status.error {
+            color: var(--danger-red);
+        }
 
         /* ===== CATEGORY IMAGE UPLOAD ===== */
         .category-image-row {
@@ -512,12 +677,35 @@
             padding: 14px;
         }
 
-        .category-image-block h4 { font-size: 13px; font-weight: 700; color: var(--primary); margin-bottom: 4px; }
-        .category-image-block .helper-text { font-size: 11px; color: var(--text-light); margin-bottom: 10px; }
-        .category-image-block .image-upload-area { padding: 18px 12px; }
-        .category-image-block .image-upload-area i { font-size: 24px; margin-bottom: 6px; }
-        .category-image-block .image-upload-area p { font-size: 12px; }
-        .category-image-block .image-upload-area small { font-size: 10px; }
+        .category-image-block h4 {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
+
+        .category-image-block .helper-text {
+            font-size: 11px;
+            color: var(--text-light);
+            margin-bottom: 10px;
+        }
+
+        .category-image-block .image-upload-area {
+            padding: 18px 12px;
+        }
+
+        .category-image-block .image-upload-area i {
+            font-size: 24px;
+            margin-bottom: 6px;
+        }
+
+        .category-image-block .image-upload-area p {
+            font-size: 12px;
+        }
+
+        .category-image-block .image-upload-area small {
+            font-size: 10px;
+        }
 
         .cat-preview-single {
             position: relative;
@@ -529,8 +717,16 @@
             display: none;
         }
 
-        .cat-preview-single.show { display: block; }
-        .cat-preview-single img { width: 100%; height: 120px; object-fit: contain; padding: 8px; }
+        .cat-preview-single.show {
+            display: block;
+        }
+
+        .cat-preview-single img {
+            width: 100%;
+            height: 120px;
+            object-fit: contain;
+            padding: 8px;
+        }
 
         .cat-preview-single .remove-btn {
             position: absolute;
@@ -549,10 +745,18 @@
             justify-content: center;
         }
 
-        .cat-preview-single .remove-btn:hover { background: #c0392b; }
+        .cat-preview-single .remove-btn:hover {
+            background: #c0392b;
+        }
 
         /* ===== BUTTONS ===== */
-        .btn-primary, .btn-success, .btn-danger, .btn-outline { cursor: pointer; transition: var(--transition); }
+        .btn-primary,
+        .btn-success,
+        .btn-danger,
+        .btn-outline {
+            cursor: pointer;
+            transition: var(--transition);
+        }
 
         .btn-primary {
             padding: 10px 28px;
@@ -564,7 +768,11 @@
             font-size: 14px;
         }
 
-        .btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(62, 64, 149, 0.3); }
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(62, 64, 149, 0.3);
+        }
 
         .btn-success {
             padding: 10px 28px;
@@ -576,8 +784,17 @@
             font-size: 14px;
         }
 
-        .btn-success:hover { background: #138a45; transform: translateY(-2px); }
-        .btn-success:disabled, .btn-primary:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+        .btn-success:hover {
+            background: #138a45;
+            transform: translateY(-2px);
+        }
+
+        .btn-success:disabled,
+        .btn-primary:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
 
         .btn-danger {
             padding: 8px 16px;
@@ -589,7 +806,9 @@
             font-size: 12px;
         }
 
-        .btn-danger:hover { background: #c0392b; }
+        .btn-danger:hover {
+            background: #c0392b;
+        }
 
         .btn-outline {
             padding: 10px 28px;
@@ -601,15 +820,38 @@
             font-size: 14px;
         }
 
-        .btn-outline:hover { border-color: var(--primary); color: var(--primary); }
+        .btn-outline:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
 
         /* ===== TABLE ===== */
-        .table-responsive { overflow-x: auto; max-height: 500px; overflow-y: auto; }
-        .table-responsive::-webkit-scrollbar { width: 6px; height: 6px; }
-        .table-responsive::-webkit-scrollbar-track { background: var(--light-gray); border-radius: 10px; }
-        .table-responsive::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 10px; }
+        .table-responsive {
+            overflow-x: auto;
+            max-height: 500px;
+            overflow-y: auto;
+        }
 
-        .admin-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+        .table-responsive::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+
+        .table-responsive::-webkit-scrollbar-track {
+            background: var(--light-gray);
+            border-radius: 10px;
+        }
+
+        .table-responsive::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 10px;
+        }
+
+        .admin-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
 
         .admin-table th {
             text-align: left;
@@ -629,7 +871,9 @@
             vertical-align: middle;
         }
 
-        .admin-table tr:hover td { background: var(--primary-light); }
+        .admin-table tr:hover td {
+            background: var(--primary-light);
+        }
 
         .product-thumb-wrapper {
             width: 50px;
@@ -644,7 +888,12 @@
             position: relative;
         }
 
-        .product-thumb { width: 50px; height: 50px; object-fit: contain; display: block; }
+        .product-thumb {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+            display: block;
+        }
 
         .image-count-badge {
             position: absolute;
@@ -663,7 +912,10 @@
             border: 2px solid var(--white);
         }
 
-        .no-image-icon { color: #999; font-size: 18px; }
+        .no-image-icon {
+            color: #999;
+            font-size: 18px;
+        }
 
         .badge-status {
             display: inline-block;
@@ -673,12 +925,31 @@
             font-weight: 600;
         }
 
-        .badge-status.in-stock { background: #d5f5e3; color: #18a957; }
-        .badge-status.out-of-stock { background: #fadbd8; color: #e74c3c; }
-        .badge-status.ask-price { background: #f39c12; color: white; }
-        .badge-status.custom-badge { background: #8e44ad; color: white; }
+        .badge-status.in-stock {
+            background: #d5f5e3;
+            color: #18a957;
+        }
 
-        .admin-table .actions { display: flex; gap: 6px; flex-wrap: wrap; }
+        .badge-status.out-of-stock {
+            background: #fadbd8;
+            color: #e74c3c;
+        }
+
+        .badge-status.ask-price {
+            background: #f39c12;
+            color: white;
+        }
+
+        .badge-status.custom-badge {
+            background: #8e44ad;
+            color: white;
+        }
+
+        .admin-table .actions {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
 
         .admin-table .actions button {
             padding: 5px 12px;
@@ -690,10 +961,25 @@
             transition: var(--transition);
         }
 
-        .edit-btn { background: var(--primary-light); color: var(--primary); }
-        .edit-btn:hover { background: var(--primary); color: var(--white); }
-        .delete-btn { background: #fadbd8; color: var(--danger-red); }
-        .delete-btn:hover { background: var(--danger-red); color: var(--white); }
+        .edit-btn {
+            background: var(--primary-light);
+            color: var(--primary);
+        }
+
+        .edit-btn:hover {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .delete-btn {
+            background: #fadbd8;
+            color: var(--danger-red);
+        }
+
+        .delete-btn:hover {
+            background: var(--danger-red);
+            color: var(--white);
+        }
 
         /* ===== TRUSTED BRANDS & VALUABLE CUSTOMERS ===== */
         .brand-admin-preview {
@@ -709,8 +995,16 @@
             overflow: hidden;
         }
 
-        .brand-admin-preview.show { display: flex; }
-        .brand-admin-preview img { width: 100%; height: 100%; object-fit: contain; padding: 8px; }
+        .brand-admin-preview.show {
+            display: flex;
+        }
+
+        .brand-admin-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 8px;
+        }
 
         .brand-table-thumb {
             width: 65px;
@@ -724,12 +1018,24 @@
             overflow: hidden;
         }
 
-        .brand-table-thumb img { width: 100%; height: 100%; object-fit: contain; padding: 4px; }
+        .brand-table-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 4px;
+        }
 
-        .customer-name-admin { font-weight: 600; font-size: 14px; }
+        .customer-name-admin {
+            font-weight: 600;
+            font-size: 14px;
+        }
 
         /* ===== CATEGORIES ===== */
-        .categories-container { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+        .categories-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
 
         .categories-column {
             background: var(--light-gray);
@@ -750,7 +1056,11 @@
             gap: 8px;
         }
 
-        .categories-column h4 .count { font-size: 12px; font-weight: 400; color: var(--text-light); }
+        .categories-column h4 .count {
+            font-size: 12px;
+            font-weight: 400;
+            color: var(--text-light);
+        }
 
         .category-item {
             display: flex;
@@ -764,9 +1074,17 @@
             margin-bottom: 6px;
         }
 
-        .category-item:hover { border-color: var(--primary); box-shadow: var(--shadow); }
+        .category-item:hover {
+            border-color: var(--primary);
+            box-shadow: var(--shadow);
+        }
 
-        .category-item .cat-info { display: flex; align-items: center; gap: 10px; flex: 1; }
+        .category-item .cat-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex: 1;
+        }
 
         .category-item .cat-thumb {
             width: 40px;
@@ -781,11 +1099,32 @@
             justify-content: center;
         }
 
-        .category-item .cat-thumb img { width: 100%; height: 100%; object-fit: cover; }
-        .category-item .cat-thumb .no-image-icon { font-size: 14px; color: #bbb; }
-        .category-item .cat-name { font-weight: 600; font-size: 13px; }
-        .category-item .cat-count { font-size: 11px; color: var(--text-light); margin-left: 6px; }
-        .category-item .cat-actions { display: flex; gap: 4px; }
+        .category-item .cat-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .category-item .cat-thumb .no-image-icon {
+            font-size: 14px;
+            color: #bbb;
+        }
+
+        .category-item .cat-name {
+            font-weight: 600;
+            font-size: 13px;
+        }
+
+        .category-item .cat-count {
+            font-size: 11px;
+            color: var(--text-light);
+            margin-left: 6px;
+        }
+
+        .category-item .cat-actions {
+            display: flex;
+            gap: 4px;
+        }
 
         .category-item .cat-actions button {
             background: none;
@@ -798,8 +1137,14 @@
             font-size: 12px;
         }
 
-        .category-item .cat-actions button:hover { background: rgba(0, 0, 0, 0.05); color: var(--primary); }
-        .category-item .cat-actions .cat-delete:hover { color: var(--danger-red); }
+        .category-item .cat-actions button:hover {
+            background: rgba(0, 0, 0, 0.05);
+            color: var(--primary);
+        }
+
+        .category-item .cat-actions .cat-delete:hover {
+            color: var(--danger-red);
+        }
 
         /* ===== TOAST ===== */
         .toast {
@@ -819,10 +1164,22 @@
             transition: all 0.4s ease;
         }
 
-        .toast.show { transform: translateY(0); opacity: 1; }
-        .toast.success { background: var(--success-green); }
-        .toast.error { background: var(--danger-red); }
-        .toast.info { background: var(--primary); }
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .toast.success {
+            background: var(--success-green);
+        }
+
+        .toast.error {
+            background: var(--danger-red);
+        }
+
+        .toast.info {
+            background: var(--primary);
+        }
 
         /* ===== LOADING ===== */
         .loading-spinner {
@@ -835,45 +1192,152 @@
             animation: spin 0.8s linear infinite;
         }
 
-        @keyframes spin { to { transform: rotate(360deg); } }
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
 
-        .empty-state { text-align: center; padding: 40px 20px; color: var(--text-light); }
-        .empty-state i { font-size: 35px; display: block; margin-bottom: 10px; }
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-light);
+        }
+
+        .empty-state i {
+            font-size: 35px;
+            display: block;
+            margin-bottom: 10px;
+        }
 
         /* ===== RESPONSIVE ===== */
         @media (max-width: 1024px) {
-            .categories-container { grid-template-columns: 1fr; gap: 16px; }
-            .category-image-row { grid-template-columns: 1fr; }
-            .brand-admin-preview { width: 150px; height: 95px; }
+            .categories-container {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .category-image-row {
+                grid-template-columns: 1fr;
+            }
+
+            .brand-admin-preview {
+                width: 150px;
+                height: 95px;
+            }
         }
 
         @media (max-width: 768px) {
-            .admin-form { grid-template-columns: 1fr; }
-            .admin-form .full-width { grid-column: 1; }
-            .admin-form .form-actions { flex-direction: column; }
-            .admin-form .form-actions button { width: 100%; }
-            .admin-header { flex-direction: column; text-align: center; }
-            .stats-grid { grid-template-columns: 1fr 1fr; }
-            .login-box { padding: 30px 20px; }
-            .admin-table th, .admin-table td { padding: 8px 10px; font-size: 12px; }
-            .product-thumb-wrapper, .product-thumb { width: 40px; height: 40px; }
-            .categories-container { grid-template-columns: 1fr; }
-            .category-item .cat-thumb { width: 32px; height: 32px; }
-            .image-preview-grid { grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); }
-            .category-image-row { grid-template-columns: 1fr; }
+            .admin-form {
+                grid-template-columns: 1fr;
+            }
+
+            .admin-form .full-width {
+                grid-column: 1;
+            }
+
+            .admin-form .form-actions {
+                flex-direction: column;
+            }
+
+            .admin-form .form-actions button {
+                width: 100%;
+            }
+
+            .admin-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .login-box {
+                padding: 30px 20px;
+            }
+
+            .admin-table th,
+            .admin-table td {
+                padding: 8px 10px;
+                font-size: 12px;
+            }
+
+            .product-thumb-wrapper,
+            .product-thumb {
+                width: 40px;
+                height: 40px;
+            }
+
+            .categories-container {
+                grid-template-columns: 1fr;
+            }
+
+            .category-item .cat-thumb {
+                width: 32px;
+                height: 32px;
+            }
+
+            .image-preview-grid {
+                grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+            }
+
+            .category-image-row {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 480px) {
-            .admin-container { padding: 10px; }
-            .stats-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
-            .stat-card { padding: 15px 10px; }
-            .stat-card .number { font-size: 24px; }
-            .admin-tab { padding: 7px 12px; font-size: 12px; }
-            .admin-table th, .admin-table td { padding: 6px 8px; font-size: 11px; }
-            .product-thumb-wrapper, .product-thumb { width: 32px; height: 32px; }
-            .toast { left: 16px; right: 16px; bottom: 16px; max-width: none; font-size: 13px; }
-            .category-item .cat-thumb { width: 28px; height: 28px; }
-            .image-preview-grid { grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); }
+            .admin-container {
+                padding: 10px;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
+
+            .stat-card {
+                padding: 15px 10px;
+            }
+
+            .stat-card .number {
+                font-size: 24px;
+            }
+
+            .admin-tab {
+                padding: 7px 12px;
+                font-size: 12px;
+            }
+
+            .admin-table th,
+            .admin-table td {
+                padding: 6px 8px;
+                font-size: 11px;
+            }
+
+            .product-thumb-wrapper,
+            .product-thumb {
+                width: 32px;
+                height: 32px;
+            }
+
+            .toast {
+                left: 16px;
+                right: 16px;
+                bottom: 16px;
+                max-width: none;
+                font-size: 13px;
+            }
+
+            .category-item .cat-thumb {
+                width: 28px;
+                height: 28px;
+            }
+
+            .image-preview-grid {
+                grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+            }
         }
     </style>
 </head>
@@ -959,13 +1423,15 @@
             <button class="admin-tab" data-tab="add-product"><i class="fas fa-plus-circle"></i> Add Product</button>
             <button class="admin-tab" data-tab="categories"><i class="fas fa-tags"></i> Categories</button>
             <button class="admin-tab" data-tab="trusted-brands"><i class="fas fa-handshake"></i> Trusted Brands</button>
-            <button class="admin-tab" data-tab="valuable-customers"><i class="fas fa-users"></i> Valuable Customers</button>
+            <button class="admin-tab" data-tab="valuable-customers"><i class="fas fa-users"></i> Valuable
+                Customers</button>
             <button class="admin-tab" data-tab="add-category"><i class="fas fa-plus"></i> Add Category</button>
         </div>
 
         <!-- ===== PRODUCTS TAB ===== -->
         <div class="tab-content active" id="tab-products">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; flex-wrap:wrap; gap:10px;">
+            <div
+                style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; flex-wrap:wrap; gap:10px;">
                 <h3 style="font-size:18px;"><i class="fas fa-box"></i> All Products</h3>
                 <div style="display:flex; gap:10px; flex-wrap:wrap;">
                     <input type="text" id="searchProducts" placeholder="Search products..."
@@ -973,10 +1439,12 @@
                     <button class="btn-primary" id="refreshProductsBtn" style="padding:8px 16px;font-size:12px;">
                         <i class="fas fa-sync"></i> Refresh
                     </button>
-                    <button class="btn-primary" id="generateAllSlugsBtn" style="padding:8px 16px;font-size:12px;background:var(--accent-gold); color:var(--text-dark);">
+                    <button class="btn-primary" id="generateAllSlugsBtn"
+                        style="padding:8px 16px;font-size:12px;background:var(--accent-gold); color:var(--text-dark);">
                         <i class="fas fa-magic"></i> Generate All Slugs
                     </button>
-                    <button class="btn-primary" id="generateAllPagesBtn" style="padding:8px 16px; font-size:12px; background:var(--success-green);">
+                    <button class="btn-primary" id="generateAllPagesBtn"
+                        style="padding:8px 16px; font-size:12px; background:var(--success-green);">
                         <i class="fas fa-rocket"></i> Generate All Pages
                     </button>
                 </div>
@@ -1021,7 +1489,8 @@
                 <span id="productFormTitle">Add New Product</span>
             </h3>
 
-            <div id="editProductId" style="display:none; padding:12px; background:var(--primary-light); border-radius:var(--radius); margin-bottom:16px;">
+            <div id="editProductId"
+                style="display:none; padding:12px; background:var(--primary-light); border-radius:var(--radius); margin-bottom:16px;">
                 <i class="fas fa-edit"></i>
                 <span id="editProductIdText"></span>
             </div>
@@ -1070,13 +1539,16 @@
                 </div>
 
                 <div>
-                    <label for="productPrice">Price (PKR) <span class="optional" id="priceRequiredLabel">(required)</span></label>
+                    <label for="productPrice">Price (PKR) <span class="optional"
+                            id="priceRequiredLabel">(required)</span></label>
                     <input type="number" id="productPrice" placeholder="e.g. 9999" min="0" step="0.01">
-                    <p class="helper-text" id="priceHelper">"Ask for Price" select karne par ye field optional ho jayegi</p>
+                    <p class="helper-text" id="priceHelper">"Ask for Price" select karne par ye field optional ho jayegi
+                    </p>
                 </div>
 
                 <div>
-                    <label for="productOriginalPrice">Original Price (PKR) <span class="optional">(optional)</span></label>
+                    <label for="productOriginalPrice">Original Price (PKR) <span
+                            class="optional">(optional)</span></label>
                     <input type="number" id="productOriginalPrice" placeholder="e.g. 12000" min="0" step="0.01">
                 </div>
 
@@ -1093,9 +1565,11 @@
                 <!-- ✅ KEY FEATURES -->
                 <div class="full-width">
                     <label>Key Features (4 bullet points)</label>
-                    <input type="text" id="productFeature1" placeholder="e.g. High Precision" style="margin-bottom:6px;">
+                    <input type="text" id="productFeature1" placeholder="e.g. High Precision"
+                        style="margin-bottom:6px;">
                     <input type="text" id="productFeature2" placeholder="e.g. Durable" style="margin-bottom:6px;">
-                    <input type="text" id="productFeature3" placeholder="e.g. Warranty Available" style="margin-bottom:6px;">
+                    <input type="text" id="productFeature3" placeholder="e.g. Warranty Available"
+                        style="margin-bottom:6px;">
                     <input type="text" id="productFeature4" placeholder="e.g. Rechargeable Battery">
                     <p class="helper-text">Ye points website par tick ke sath show honge</p>
                 </div>
@@ -1108,7 +1582,8 @@
                             <i class="fas fa-cloud-upload-alt"></i>
                             <p>Click to upload product images</p>
                             <small>JPG, PNG, WEBP — Max 5MB each. First image = main image.</small>
-                            <input type="file" id="productImageFile" accept="image/jpeg,image/png,image/webp,image/gif" multiple style="display:none;">
+                            <input type="file" id="productImageFile" accept="image/jpeg,image/png,image/webp,image/gif"
+                                multiple style="display:none;">
                         </div>
                         <div>
                             <span class="image-counter" id="imageCounter">0 / 5 images</span>
@@ -1120,14 +1595,18 @@
 
                 <div class="full-width">
                     <label for="productVideoUrl">Video URL <span class="optional">(optional)</span></label>
-                    <input type="url" id="productVideoUrl" placeholder="Paste a YouTube, Instagram, or TikTok video link">
+                    <input type="url" id="productVideoUrl"
+                        placeholder="Paste a YouTube, Instagram, or TikTok video link">
                     <p class="helper-text">YouTube / Instagram / TikTok video links supported</p>
                 </div>
 
                 <!-- DESCRIPTION WITH MARKDOWN -->
                 <div class="full-width">
-                    <label for="productDesc">Description <span class="optional">(supports Markdown formatting)</span></label>
-                    <textarea id="productDesc" placeholder="Write your product description here...&#10;&#10;Tip: Use **text** for bold, *text* for italic, __text__ for underline, ~~text~~ for strikethrough" rows="6"></textarea>
+                    <label for="productDesc">Description <span class="optional">(supports Markdown
+                            formatting)</span></label>
+                    <textarea id="productDesc"
+                        placeholder="Write your product description here...&#10;&#10;Tip: Use **text** for bold, *text* for italic, __text__ for underline, ~~text~~ for strikethrough"
+                        rows="6"></textarea>
 
                     <div class="markdown-help">
                         <strong>✍️ Markdown Formatting Guide</strong>
@@ -1169,7 +1648,8 @@
                         <span class="count" id="mainCount">(0)</span>
                     </h4>
                     <div id="mainCategoriesList">
-                        <p style="color:var(--text-light); font-size:13px; text-align:center; padding:20px;">Loading main categories...</p>
+                        <p style="color:var(--text-light); font-size:13px; text-align:center; padding:20px;">Loading
+                            main categories...</p>
                     </div>
                 </div>
 
@@ -1180,7 +1660,8 @@
                         <span class="count" id="subCount">(0)</span>
                     </h4>
                     <div id="subCategoriesList">
-                        <p style="color:var(--text-light); font-size:13px; text-align:center; padding:20px;">Loading sub-categories...</p>
+                        <p style="color:var(--text-light); font-size:13px; text-align:center; padding:20px;">Loading
+                            sub-categories...</p>
                     </div>
                 </div>
             </div>
@@ -1188,9 +1669,11 @@
 
         <!-- ===== TRUSTED BRANDS ===== -->
         <div class="tab-content" id="tab-trusted-brands">
-            <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; margin-bottom:18px;">
+            <div
+                style="display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; margin-bottom:18px;">
                 <h3 style="font-size:18px;"><i class="fas fa-handshake"></i> Trusted Brand Partners</h3>
-                <button class="btn-outline" type="button" id="refreshTrustedBrandsBtn"><i class="fas fa-sync-alt"></i> Refresh</button>
+                <button class="btn-outline" type="button" id="refreshTrustedBrandsBtn"><i class="fas fa-sync-alt"></i>
+                    Refresh</button>
             </div>
 
             <form id="trustedBrandForm" class="admin-form" style="margin-bottom:24px;">
@@ -1214,14 +1697,17 @@
                         <i class="fas fa-cloud-upload-alt"></i>
                         <p>Click to upload brand logo / image</p>
                         <small>JPG, PNG, WEBP or GIF</small>
-                        <input type="file" id="trustedBrandFile" accept="image/jpeg,image/png,image/webp,image/gif" style="display:none;">
+                        <input type="file" id="trustedBrandFile" accept="image/jpeg,image/png,image/webp,image/gif"
+                            style="display:none;">
                     </div>
-                    <div class="brand-admin-preview" id="trustedBrandPreview"><img id="trustedBrandPreviewImg" src="" alt="Brand preview"></div>
+                    <div class="brand-admin-preview" id="trustedBrandPreview"><img id="trustedBrandPreviewImg" src=""
+                            alt="Brand preview"></div>
                     <input type="hidden" id="trustedBrandImageURL" value="">
                     <div id="trustedBrandUploadStatus" class="upload-status"></div>
                 </div>
                 <div class="full-width" style="display:flex; gap:10px; flex-wrap:wrap;">
-                    <button type="submit" class="btn-success" id="saveTrustedBrandBtn"><i class="fas fa-plus"></i> Add Brand</button>
+                    <button type="submit" class="btn-success" id="saveTrustedBrandBtn"><i class="fas fa-plus"></i> Add
+                        Brand</button>
                     <button type="button" class="btn-outline" id="resetTrustedBrandBtn">Reset</button>
                 </div>
             </form>
@@ -1238,7 +1724,8 @@
                     </thead>
                     <tbody id="trustedBrandsTableBody">
                         <tr>
-                            <td colspan="4" style="text-align:center; padding:25px; color:var(--text-light);">Loading trusted brands...</td>
+                            <td colspan="4" style="text-align:center; padding:25px; color:var(--text-light);">Loading
+                                trusted brands...</td>
                         </tr>
                     </tbody>
                 </table>
@@ -1247,9 +1734,11 @@
 
         <!-- ===== VALUABLE CUSTOMERS ===== -->
         <div class="tab-content" id="tab-valuable-customers">
-            <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; margin-bottom:18px;">
+            <div
+                style="display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; margin-bottom:18px;">
                 <h3 style="font-size:18px;"><i class="fas fa-users"></i> Valuable Customers</h3>
-                <button class="btn-outline" type="button" id="refreshCustomersBtn"><i class="fas fa-sync-alt"></i> Refresh</button>
+                <button class="btn-outline" type="button" id="refreshCustomersBtn"><i class="fas fa-sync-alt"></i>
+                    Refresh</button>
             </div>
 
             <form id="customerForm" class="admin-form" style="margin-bottom:24px;">
@@ -1263,7 +1752,8 @@
                     <input type="number" id="customerOrder" min="0" value="0">
                 </div>
                 <div class="full-width" style="display:flex; gap:10px; flex-wrap:wrap;">
-                    <button type="submit" class="btn-success" id="saveCustomerBtn"><i class="fas fa-plus"></i> Add Customer</button>
+                    <button type="submit" class="btn-success" id="saveCustomerBtn"><i class="fas fa-plus"></i> Add
+                        Customer</button>
                     <button type="button" class="btn-outline" id="resetCustomerBtn">Reset</button>
                 </div>
             </form>
@@ -1279,7 +1769,8 @@
                     </thead>
                     <tbody id="customersTableBody">
                         <tr>
-                            <td colspan="3" style="text-align:center; padding:25px; color:var(--text-light);">Loading customers...</td>
+                            <td colspan="3" style="text-align:center; padding:25px; color:var(--text-light);">Loading
+                                customers...</td>
                         </tr>
                     </tbody>
                 </table>
@@ -1293,7 +1784,8 @@
                 <span id="categoryFormTitle">Add New Category</span>
             </h3>
 
-            <div id="editCategoryId" style="display:none; padding:12px; background:var(--primary-light); border-radius:var(--radius); margin-bottom:16px;">
+            <div id="editCategoryId"
+                style="display:none; padding:12px; background:var(--primary-light); border-radius:var(--radius); margin-bottom:16px;">
                 <i class="fas fa-edit"></i>
                 <span id="editCategoryIdText"></span>
             </div>
@@ -1301,12 +1793,18 @@
             <form id="addCategoryForm" style="margin-bottom:20px;">
                 <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:12px;">
                     <div>
-                        <label for="newCategoryName" style="font-size:13px; font-weight:600; display:block; margin-bottom:4px;">Category Name *</label>
-                        <input type="text" id="newCategoryName" placeholder="Enter category name..." style="width:100%; padding:10px 14px; border:1.5px solid var(--border-color); border-radius:var(--radius); font-size:13px; outline:none;">
+                        <label for="newCategoryName"
+                            style="font-size:13px; font-weight:600; display:block; margin-bottom:4px;">Category Name
+                            *</label>
+                        <input type="text" id="newCategoryName" placeholder="Enter category name..."
+                            style="width:100%; padding:10px 14px; border:1.5px solid var(--border-color); border-radius:var(--radius); font-size:13px; outline:none;">
                     </div>
                     <div>
-                        <label for="newCategoryParent" style="font-size:13px; font-weight:600; display:block; margin-bottom:4px;">Parent Category (for sub-category)</label>
-                        <select id="newCategoryParent" style="width:100%; padding:10px 14px; border:1.5px solid var(--border-color); border-radius:var(--radius); font-size:13px; outline:none;">
+                        <label for="newCategoryParent"
+                            style="font-size:13px; font-weight:600; display:block; margin-bottom:4px;">Parent Category
+                            (for sub-category)</label>
+                        <select id="newCategoryParent"
+                            style="width:100%; padding:10px 14px; border:1.5px solid var(--border-color); border-radius:var(--radius); font-size:13px; outline:none;">
                             <option value="">None (Main Category)</option>
                         </select>
                     </div>
@@ -1328,12 +1826,14 @@
                                 <i class="fas fa-cloud-upload-alt"></i>
                                 <p>Click to upload card image</p>
                                 <small>JPG, PNG, WEBP — Max 5MB</small>
-                                <input type="file" id="cardImageFile" accept="image/jpeg,image/png,image/webp,image/gif" style="display:none;">
+                                <input type="file" id="cardImageFile" accept="image/jpeg,image/png,image/webp,image/gif"
+                                    style="display:none;">
                             </div>
 
                             <div class="cat-preview-single" id="cardImagePreview">
                                 <img id="cardPreviewImg" src="" alt="Card Preview">
-                                <button type="button" class="remove-btn" id="removeCardImageBtn"><i class="fas fa-times"></i></button>
+                                <button type="button" class="remove-btn" id="removeCardImageBtn"><i
+                                        class="fas fa-times"></i></button>
                             </div>
                         </div>
 
@@ -1346,12 +1846,14 @@
                                 <i class="fas fa-cloud-upload-alt"></i>
                                 <p>Click to upload banner image</p>
                                 <small>JPG, PNG, WEBP — Max 5MB</small>
-                                <input type="file" id="bannerImageFile" accept="image/jpeg,image/png,image/webp,image/gif" style="display:none;">
+                                <input type="file" id="bannerImageFile"
+                                    accept="image/jpeg,image/png,image/webp,image/gif" style="display:none;">
                             </div>
 
                             <div class="cat-preview-single" id="bannerImagePreview">
                                 <img id="bannerPreviewImg" src="" alt="Banner Preview">
-                                <button type="button" class="remove-btn" id="removeBannerImageBtn"><i class="fas fa-times"></i></button>
+                                <button type="button" class="remove-btn" id="removeBannerImageBtn"><i
+                                        class="fas fa-times"></i></button>
                             </div>
                         </div>
                     </div>
@@ -1511,7 +2013,7 @@
                 });
 
                 let result;
-                try { result = await response.json(); } catch (e) { result = { error: 'Invalid JSON response from Edge Function' }; }
+                try {result = await response.json();} catch (e) {result = {error: 'Invalid JSON response from Edge Function'};}
 
                 if (response.ok && result.success) {
                     console.log('✅ Product page generated:', result.url);
@@ -1695,23 +2197,37 @@
         // =========================================================
         function parseMarkdown(text) {
             if (!text) return '';
-            let html = String(text)
+            // Normalize line endings + literal "\n" text
+            const normalized = String(text)
+                .replace(/\r\n?/g, '\n')
+                .replace(/\\r\\n|\\n/g, '\n');
+
+            let html = normalized
                 .replace(/&/g, '&amp;').replace(/</g, '&lt;')
                 .replace(/>/g, '&gt;').replace(/"/g, '&quot;')
                 .replace(/'/g, '&#039;');
-            html = html.replace(/\*\*\*([\s\S]+?)\*\*\*/g, '<strong><em>$1</em></strong>');
-            html = html.replace(/\*\*([\s\S]+?)\*\*/g, '<strong>$1</strong>');
-            html = html.replace(/(?<![\*\w])\*(?![\s\*])([^\*\n]+?)(?<![\s\*])\*(?![\*\w])/g, '<em>$1</em>');
-            html = html.replace(/__([\s\S]+?)__/g, '<u>$1</u>');
-            html = html.replace(/~~([\s\S]+?)~~/g, '<s>$1</s>');
-            html = html.replace(/\[([^\]]+)\]\((https?:\/\/[^\)\s]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
-            html = html.replace(/\n/g, '<br>');
-            return html;
+
+            html = html.replace(/\*\*\*((?:(?!\n\n)[\s\S])+?)\*\*\*/g, '<strong><em>$1</em></strong>');
+            html = html.replace(/\*\*((?:(?!\n\n)[\s\S])+?)\*\*/g, '<strong>$1</strong>');
+            // Italic without lookbehind (Safari-safe)
+            html = html.replace(/(^|[^*\w])\*([^\s*](?:[^*\n]*?[^\s*])?)\*(?![*\w])/g, '$1<em>$2</em>');
+            html = html.replace(/__((?:(?!\n\n)[\s\S])+?)__/g, '<u>$1</u>');
+            html = html.replace(/~~((?:(?!\n\n)[\s\S])+?)~~/g, '<s>$1</s>');
+            html = html.replace(/\[([^\]]+)\]\((https?:\/\/[^\)\s]+)\)/g,
+                '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
+
+            // Paragraphs (blank line) + single line breaks
+            return html
+                .split(/\n{2,}/)
+                .map(p => p.trim())
+                .filter(Boolean)
+                .map(p => `<p style="margin:0 0 12px; white-space:normal;">${p.replace(/\n/g, '<br>')}</p>`)
+                .join('');
         }
 
         function updateDescriptionPreview() {
             const raw = productDesc.value || '';
-            if (raw.trim() === '') { descriptionPreview.innerHTML = ''; return; }
+            if (raw.trim() === '') {descriptionPreview.innerHTML = ''; return;}
             descriptionPreview.innerHTML = parseMarkdown(raw);
         }
 
